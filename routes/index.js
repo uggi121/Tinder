@@ -12,7 +12,18 @@ router.get('/', function(req, res, next) {
     console.log(message);
   })
 
-  res.render('index', { title: 'Express' });
+ 
+  const f = () => {
+	  console.log("Test title");
+	  return 'Tinder';
+  }
+  
+  const g = () => {
+	  console.log("Test name");
+	  return "Uggi";
+  }
+  
+  res.render('index', { title: f(), name: g() });
   pyshell.end(function(err){
     if(err){
       throw err;
