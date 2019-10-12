@@ -29,8 +29,8 @@ router.get('/', function(req, res, next) {
   pyshell.on('message', function(message) 
   {
     console.log(message);
-  })
-  
+  })  
+  res.render('index', { title: f(), name: g() });
   pyshell.end(function(err){
     if(err){
       throw err;
