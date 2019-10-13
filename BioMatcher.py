@@ -4,8 +4,7 @@ import re
 REPLACE_NO_SPACE = re.compile("[.;:!\'?,\"()\[\]]")
 REPLACE_WITH_SPACE = re.compile("(<br\s*/><br\s*/>)|(\-)|(\/)")
 
-bio = """My name is sudharshan. I like to fuck with people. I don't love having sex 
-        and treat women like objects. I don't watch cricket. Likes soap operas."""
+bio = """here to make new friends, just seeing da vibes and going with the flow"""
 
 def breakSentenceToWords(input):
     input = [REPLACE_NO_SPACE.sub("", line.lower()) for line in input.split()]
@@ -23,18 +22,29 @@ def splitSentence(input):
     input = input.split(".")
     return input
 
-def 
-
- #and (not containsNegative(sentence))
-
-def checkKeyword(bio, keyword):
-    keyword = keyword.lower()
-    parsedBio = splitSentence(bio)
-    for sentence in parsedBio:
-        words = breakSentenceToWords(sentence)
-        sentence = sentence.lower()
-        if ((keyword in words) and (not containsNegative(sentence))):
+def keywordPresent(sentences, keyword):
+    for line in sentences:
+        if keyword in line and not containsNegative(line):
             return True
     return False
 
-print(checkKeyword(bio, "SoAp OPerAs"))
+def calculatePercentage(total, keywords):
+    percentage = total/len(keywords)
+    return percentage * 100
+
+def checkKeyword(bio, keywords, percentage):
+    keywords = keywords.lower().split(", ")
+    parsedBio = splitSentence(bio)
+    total = 0
+    for keys in keywords:
+        if (keywordPresent(parsedBio, keys)):
+            total = total + 1
+    print(total)
+    matchPercentage = calculatePercentage(total, keywords)
+    print(matchPercentage)
+    if matchPercentage >= percentage:
+        return True
+    else:
+        return False
+
+print(checkKeyword(bio, "friend", 60))
