@@ -16,8 +16,8 @@ from pred import main
 #PUT TINDER PERSONS PICS IN test/ folder
 # rubn imageProcessor
 # remove images from test/ folder
-def imageProcessor(folder):
-    filters=open("matching/filter.txt",  "r")
+def imageProcessor(folder,counter):
+    filters=open("matching/filter"+str(counter)+".txt",  "r")
     filters = filters.readline().strip().split()
     count = -1
     avgloss = 0
@@ -56,8 +56,8 @@ def imageProcessor(folder):
     if avgloss in range(50,90) or flag:
         return True
     return False    
-def TextProcessor():
-    text = open("matching/textfilter.txt" ,"r")
+def TextProcessor(counter):
+    text = open("matching/textfilter"+str(counter)+".txt" ,"r")
     bio=""
     keywords =[]
     flag = True
@@ -73,7 +73,8 @@ def TextProcessor():
                 sentiment.append(line.strip().split()[1])
                 
     text.close()
-    
+    print(keywords)
+    print(bio)
     return(checkKeyword(bio, keywords, 80 , sentiment ))
         
             
@@ -81,5 +82,17 @@ def TextProcessor():
     
 #if you want to train similarity checker for new dataset, uncomment the below:
 #Trainner().run()
-print(imageProcessor("test/") and TextProcessor()) #ALL THE TINDER PERSON IMAGES SHOULD GO INSIDE THIS
+f = open("rightswipe.txt","w")
+g = open("leftswipe.txt" , "w")
+for i in range(1, 5):
+    
+    result = (imageProcessor("testt/profile"+str(i), i) and TextProcessor(i)) #ALL THE TINDER PERSON IMAGES SHOULD GO INSIDE THIS
+    print(result)
+    
+    if result==True:
+        f.write("profile"+str(i)+"\n")
+    else:
+        g.write("profile"+str(i)+"\n")
+f.close()
+g.close()
 

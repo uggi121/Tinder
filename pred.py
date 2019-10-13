@@ -84,18 +84,18 @@ def main(folder):
     # load the model
     with open(model_path,'rb') as f:
         clf, labels = pickle.load(f)
-    print(clf)
-    print(labels)
+    #print(clf)
+    #print(labels)
     
-    print("classifying images in {}".format(input_dir))
+    #print("classifying images in {}".format(input_dir))
     races=[]
     for fname in os.listdir(input_dir):
-        print(fname)
+        #print(fname)
         img_path = os.path.join(input_dir, fname)
         try:
             pred, locs = predict_one_image(img_path, clf, labels)
-            print(type(pred))
-            print("SUP")
+            #print(type(pred))
+            #print("SUP")
         except:
             print("Skipping {}".format(img_path))
         if not locs:
@@ -103,7 +103,7 @@ def main(folder):
         locs = \
             pd.DataFrame(locs, columns = ['top', 'right', 'bottom', 'left'])
         df = pd.concat([pred, locs], axis=1)
-        print(df)
+        #print(df)
         img,race = draw_attributes(img_path, df)
         races.append(race)
         cv2.imwrite(os.path.join(output_dir, fname), img)
