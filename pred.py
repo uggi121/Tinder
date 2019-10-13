@@ -37,6 +37,7 @@ def draw_attributes(img_path, df):
     """Write bounding boxes and predicted face attributes on the image
     """
     img = cv2.imread(img_path)
+    
     # img  = cv2.cvtColor(color, cv2.COLOR_BGR2RGB)
     for row in df.iterrows():
         top, right, bottom, left = row[1][4:].astype(int)
@@ -46,7 +47,7 @@ def draw_attributes(img_path, df):
             gender = 'Female'
         if row[1]["Black"]<0.499 and row[1]["White"]<0.499 and row[1]["Asian"]<0.499:
             race = "Asian/Indian"
-            print("INDIAAAA")
+            #print("INDIAAAA")
         else:
             race = np.argmax(row[1][1:4])
         text_showed = "{} {}".format(race, gender)
@@ -55,6 +56,9 @@ def draw_attributes(img_path, df):
         font = cv2.FONT_HERSHEY_DUPLEX
         img_width = img.shape[1]
         cv2.putText(img, text_showed, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
+        cv2.imshow("TINDER SIM" , img)
+        cv2.waitKey(0)
+    cv2.destroyAllWindows()
     return img,race
 
 
