@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  	
+  	<div id="row">
+  		<div id="col-one">
+  			<div id="container">
+	  			<div id="panel-one">
+	  				<div id="img-div">
+	  					<img src="settings.jpg" height="30" width="30" alt="Settings" id="img" onclick="alert('Settings disabled!')" />
+	  				</div>
+	  				<div id="txt-div">
+	  					<h3>My Profile</h3>
+	  				</div>
+	  			</div>
+	  			<div id="content-one">
+	  				<p>Content</p>
+	  			</div>
+  			</div>
+  		</div>
+  		<div id="col-two">
+  			<div id="main">
+  				<h3><%= title %></h3>
+  			</div>
+  			<div id="card">
+  				<div id="picture">
+					  <h4>Image</h4>
+					  <img src = "image.jpg" alt = "image" height = "200" width = "280">
+  				</div>
+  				<div id="bio">
+					  <h4>Name: <%= name %></h4>
+					  <h4>Bio:  <%= bio  %></h4>
+  				</div>
+  			</div>
+			 <div id="for-button1"> 
+			  <button type="button" id="button1">Swipe Right</button>
+			</div> 
+			<div id="for-button2">
+				<button type="button" id="button2">Swipe Left</button>
+			</div>
+		</div>
+  	</div>
   </body>
 </html>
