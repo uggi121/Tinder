@@ -3,10 +3,10 @@ body {
   	font-family: "Calibri";
   	background-color: #f7f7f7;
   	margin: 0;
-	padding: 0 0 80px 0;  
+	padding: 0 0 120px 0;  
 	height: 100%;
-	background: rgb(253,41,123);
-	background: linear-gradient(0deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 49%, rgba(255,101,91,1) 100%);
+	#background: rgb(253,41,123);
+	#background: linear-gradient(0deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 49%, rgba(255,101,91,1) 100%);
 }
 
 #row {
@@ -34,6 +34,8 @@ body {
 	border-top-right-radius: 0;
 	border-top-left-radius: 0;
 	border-top-width: 1px;
+	background: rgb(253,41,123);
+	background: linear-gradient(0deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 49%, rgba(255,101,91,1) 100%);
 }
 
 #container {
@@ -43,9 +45,10 @@ body {
 }
 
 #panel-one {
+	display: inline-block;
 	margin: 0;
 	color: white;
-	text-align: center;
+	text-align: left;
 	width: 90%;
 	padding: 5px 4%;
 	height: 10%;
@@ -87,24 +90,28 @@ body {
 #main {
 	width: 100%;
 	padding: 0 5%;
+	text-align: center;
 	color: black;
-	#background: rgb(100,102,107);
-	#background: radial-gradient(circle, rgba(100,102,107,0.9084676106770834) 0%, rgba(184,159,164,0.8664508039543942) 100%);
+	font-weight: bolder;
+	font-size: 20px;
+	background: rgb(253,41,123);
+	background: linear-gradient(0deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 49%, rgba(255,101,91,1) 100%);
 	border: 1px solid black;
 	border-top-width: 0;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	box-shadow: black 0.5px 0.5px 4px;
-	background-color: #f7f7f7;
+	#background-color: #f7f7f7;
 }
 
 #card {
 	clear: both;
 	padding: 2%;
-	margin: 1% 34.5% 0% 32.5%;
+	margin: 3% 34.5% 0% 32.5%;
 	float: none;
 	width: 35%;
-	background-color: #f7f7f7;
+	background: rgb(253,41,123);
+	background: linear-gradient(0deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 49%, rgba(255,101,91,1) 100%);
 	min-height: 300px;
 	height: 100%;
 	border: 1px solid black;
@@ -116,7 +123,7 @@ body {
 	overflow: hidden;
 	background-color: white;
 	clear: both;
-	padding: 2% 3%;
+	padding: 0 3%;
 	margin: 4% 5%;
 	width: 84%;
 	height: 70%;
@@ -147,7 +154,7 @@ body {
 #button1 {
 	font-weight: bold;
 	padding: 10px 20px;
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0);
 	border: 2px solid black;
 	border-radius: 5px;
 	box-shadow: black 0.5px 0.5px 3px;
@@ -156,17 +163,19 @@ body {
 #button2 {
 	font-weight: bold;
 	padding: 10px 20px;
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0);
 	border: 2px solid black;
 	border-radius: 5px;
 	box-shadow: black 0.5px 0.5px 3px;
 }
 
 #button1:hover {
+	border: 2px solid lime;
 	background-color: lime
 }
 
 #button2:hover {
+	border: 2px solid red;
 	background-color: red;
 }
 
@@ -176,6 +185,20 @@ body {
 
 #col-two div {
 	display: inline-block;
+}
+
+#img {
+	float: left;
+	display: inline-block;
+	align-self: center;
+}
+
+#img-div {
+	padding: 5px 0 0 0;
+}
+
+#txt-div {
+	margin-left: 3%;
 }
 
 footer {

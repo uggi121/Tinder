@@ -34,7 +34,7 @@ router.get('/', function(req, res, next) {
     if(err){
       throw err;
     };
-    res.render('index', { title: 'Express', name: profiles[0]["name"], bio: profiles[0]["bio"]});
+    res.render('index', { title: 'Tinder Swiper', name: profiles[0]["name"], bio: profiles[0]["bio"]});
   console.log('finished');
   })
 });
