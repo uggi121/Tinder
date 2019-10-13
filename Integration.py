@@ -8,7 +8,7 @@ import os
 from Detect import Prediction
 import cv2
 from Train import Trainner
-
+from BioMatcher import checkKeyword
 import numpy as np
 import sys
 
@@ -16,7 +16,9 @@ from pred import main
 #PUT TINDER PERSONS PICS IN test/ folder
 # rubn imageProcessor
 # remove images from test/ folder
-def imageProcessor(folder,  filters=None):
+def imageProcessor(folder):
+    filters=open("matching/filter.txt",  "r")
+    filters = filters.readline().strip().split()
     count = -1
     avgloss = 0
     if folder == None and filters != None:
@@ -54,7 +56,30 @@ def imageProcessor(folder,  filters=None):
     if avgloss in range(50,90) or flag:
         return True
     return False    
+def TextProcessor():
+    text = open("matching/textfilter.txt" ,"r")
+    bio=""
+    keywords =[]
+    flag = True
+    sentiment = []
+    for line in text:
+        if line.strip() != "#####"and flag:
+            bio+=line.strip()+" . "
+        elif line.strip() == "#####":
+             flag = False
+        elif line.strip() != "#####" and not flag and line!="\n":
+                #print(line)
+                keywords.append(line.strip().split()[0])
+                sentiment.append(line.strip().split()[1])
+                
+    text.close()
+    
+    return(checkKeyword(bio, keywords, 80 , sentiment ))
+        
+            
+            
+    
 #if you want to train similarity checker for new dataset, uncomment the below:
 #Trainner().run()
-print(imageProcessor("test/",["Black"])) #ALL THE TINDER PERSON IMAGES SHOULD GO INSIDE THIS
+print(imageProcessor("test/") and TextProcessor()) #ALL THE TINDER PERSON IMAGES SHOULD GO INSIDE THIS
 
