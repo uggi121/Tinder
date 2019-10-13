@@ -63,7 +63,7 @@ def TextProcessor(counter):
     flag = True
     sentiment = []
     for line in text:
-        if line.s trip() != "#####"and flag:
+        if line.strip() != "#####"and flag:
             bio+=line.strip()+" . "
         elif line.strip() == "#####":
              flag = False
