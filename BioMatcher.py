@@ -1,6 +1,8 @@
 import re
 from nltk.corpus import stopwords
 from textblob import TextBlob 
+import cv2
+import numpy as np
 
 REPLACE_NO_SPACE = re.compile("[.;:!\'?,\"()\[\]]")
 REPLACE_WITH_SPACE = re.compile("(<br\s*/><br\s*/>)|(\-)|(\/)")
