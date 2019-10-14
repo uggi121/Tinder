@@ -1,5 +1,0 @@
-I really love playing football
-I hate basketball
-#####
-football pos
-basketball neg

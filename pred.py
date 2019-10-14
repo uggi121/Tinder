@@ -37,6 +37,7 @@ def draw_attributes(img_path, df):
     """Write bounding boxes and predicted face attributes on the image
     """
     img = cv2.imread(img_path)
+    
     # img  = cv2.cvtColor(color, cv2.COLOR_BGR2RGB)
     for row in df.iterrows():
         top, right, bottom, left = row[1][4:].astype(int)
@@ -46,7 +47,7 @@ def draw_attributes(img_path, df):
             gender = 'Female'
         if row[1]["Black"]<0.499 and row[1]["White"]<0.499 and row[1]["Asian"]<0.499:
             race = "Asian/Indian"
-            print("INDIAAAA")
+            #print("INDIAAAA")
         else:
             race = np.argmax(row[1][1:4])
         text_showed = "{} {}".format(race, gender)
@@ -55,6 +56,9 @@ def draw_attributes(img_path, df):
         font = cv2.FONT_HERSHEY_DUPLEX
         img_width = img.shape[1]
         cv2.putText(img, text_showed, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
+        cv2.imshow("TINDER SIM" , img)
+        cv2.waitKey(0)
+    cv2.destroyAllWindows()
     return img,race
 
 
@@ -84,18 +88,18 @@ def main(folder):
     # load the model
     with open(model_path,'rb') as f:
         clf, labels = pickle.load(f)
-    print(clf)
-    print(labels)
+    #print(clf)
+    #print(labels)
     
-    print("classifying images in {}".format(input_dir))
+    #print("classifying images in {}".format(input_dir))
     races=[]
     for fname in os.listdir(input_dir):
-        print(fname)
+        #print(fname)
         img_path = os.path.join(input_dir, fname)
         try:
             pred, locs = predict_one_image(img_path, clf, labels)
-            print(type(pred))
-            print("SUP")
+            #print(type(pred))
+            #print("SUP")
         except:
             print("Skipping {}".format(img_path))
         if not locs:
@@ -103,7 +107,7 @@ def main(folder):
         locs = \
             pd.DataFrame(locs, columns = ['top', 'right', 'bottom', 'left'])
         df = pd.concat([pred, locs], axis=1)
-        print(df)
+        #print(df)
         img,race = draw_attributes(img_path, df)
         races.append(race)
         cv2.imwrite(os.path.join(output_dir, fname), img)
