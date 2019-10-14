@@ -50,3 +50,4 @@ def checkKeyword(bio, keywords, percentage, sentiments):
     else:
         return False
 
+print(checkKeyword(bio, "new friend", 60, ["pos"]))
